@@ -26,14 +26,15 @@ const provider = new GoogleAuthProvider();
 var _user;
 
 
-const whenSignedIn = document.getElementById("whenSignedIn");
-const whenSignedOut = document.getElementById("whenSignedOut");
+const doc_whenSignedIn = document.getElementById("whenSignedIn");
+const doc_whenSignedOut = document.getElementById("whenSignedOut");
 
-const signInBtn = document.getElementById("signInBtn");
-const signOutBtn = document.getElementById("signOutBtn");
+const doc_signInBtn = document.getElementById("signInBtn");
+const doc_signOutBtn = document.getElementById("signOutBtn");
 
 const userDetails = document.getElementById("userDetails");
-
+const doc_username = document.getElementById("username");
+const doc_userEmail = document.getElementById("userEmail");
 
 //detect auth state
 onAuthStateChanged(auth, user => {
@@ -49,18 +50,18 @@ onAuthStateChanged(auth, user => {
 });
 
 const displayAsSignedIn = () => {
-    document.getElementById("whenSignedIn").hidden = false;
-    document.getElementById("whenSignedOut").hidden = true;
+    doc_whenSignedIn.hidden = false;
+    doc_whenSignedOut.hidden = true;
     if (_user.displayName) {
-        document.getElementById("username").innerHTML = _user.displayName;
-        document.getElementById("userEmail").innerHTML = _user.email;
+        doc_username.innerHTML = _user.displayName;
+        doc_userEmail.innerHTML = _user.email;
         console.log(_user.displayName);
     }
 }
 
 const displayAsSignedOut = () => {
-    document.getElementById("whenSignedIn").hidden = true;
-    document.getElementById("whenSignedOut").hidden = false;
+    doc_whenSignedIn.hidden = true;
+    doc_whenSignedOut.hidden = false;
 }
 
 
@@ -86,5 +87,5 @@ const userSignOut = async () => {
     });
 }
 
-signInBtn.onclick = () => userSignIn();
-signOutBtn.onclick = () => userSignOut();
+doc_signInBtn.onclick = () => userSignIn();
+doc_signOutBtn.onclick = () => userSignOut();
